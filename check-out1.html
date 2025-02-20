@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREE FIRE IDS</title>
+    <link rel="shortcut icon" href="mr.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        /* PURCHASE IT ko center me lana */
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-top: 20px;
+        }
+
+        /* Screenshots ko horizontally dikhane ka style */
+        .screenshots-content {
+            display: flex; /* Flexbox layout for horizontal arrangement */
+            justify-content: center; /* Center images horizontally */
+            gap: 20px; /* Space between images */
+            padding: 20px;
+        }
+
+        .screenshots-content img {
+            width: 30%; /* Width ko thoda kam kar diya */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Container ko thoda center me lana */
+        .container {
+            margin: 0 auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav container">
+            <a href="index.html" class="logo">FREE<span>FIRE</span> IDS </a>
+            <div class="nav-icons">
+                <i class='bx bx-bell bx-tada' id="bell-icon"><span></span></i>
+                <i class='bx bx-home'></i>
+                <i class='bx bx-cart-add' id="cart-icon"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="home container" id="home">
+        <img src="UniversalUpscaler_e7106871-18fc-4441-a2f5-1a544648e7c9.jpg" alt="">
+        <div class="home-text"></div>
+    </section> 
+
+    <div class="about container">
+        <h2>ABOUT FREE FIRE ID</h2>
+        <div class="id-details">
+            <h2>Selected Free Fire ID</h2>
+            <p><strong>ID:</strong> 987654321.</p>
+            <p><strong>Level:</strong> 80.</p>
+            <p><strong>Price:</strong> 75K.</p>
+        </div>
+    </div>
+
+    <!-- Screenshots Horizontally -->
+    <div class="screenshots container">
+        <div class="screenshots-content">
+            <img src="download.jpg" alt="Screenshot 1">
+            <img src="mr.jpg" alt="Screenshot 2">
+            <img src="S.jpg" alt="Screenshot 3">
+        </div>
+    </div>
+
+    <h1>PURCHASE IT:</h1>
+
+    <!-- ✅ Checkout Details -->
+    <div id="checkout-details"></div>
+
+    <!-- ✅ Purchase Button -->
+    <button id="purchase-btn">Purchase</button>
+
+    <!-- ✅ Pehla Popup (Confirm Purchase) -->
+    <div id="confirm-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup('confirm-popup')">&times;</span>
+            <h2>Confirm Purchase</h2>
+            <div id="popup-id-details"></div>
+            <button onclick="confirmPurchase()">Confirm</button>
+        </div>
+    </div>
+
+    <!-- ✅ Dusra Popup (WhatsApp Order Confirmation) -->
+    <div id="order-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup('order-popup')">&times;</span>
+            <h2>Your Order</h2>
+            <p>Thank you for your purchase! Contact us on WhatsApp for ID access.</p>
+            <p><strong>WhatsApp Number:</strong> +92 3327373104</p>
+        </div>
+    </div>
+    
+    <script>
+        // ✅ ID Details Load
+        let item = JSON.parse(localStorage.getItem("selectedID"));
+        if (item) {
+            document.getElementById("checkout-details").innerHTML = `
+                <h2>Selected Free Fire ID</h2>
+                <p><strong>ID:</strong> ${item.id}</p>
+                <p><strong>Level:</strong> ${item.level}</p>
+                <p><strong>Price:</strong> ${item.price}</p>
+            `;
+            document.getElementById("popup-id-details").innerHTML = document.getElementById("checkout-details").innerHTML;
+        } else {
+            document.getElementById("checkout-details").innerHTML = "<p>ID NAME: ꧁༺J꙰O꙰K꙰E꙰R꙰༻꧂</p>";
+        }
+
+        // ✅ Show Popup Function
+        function showPopup(popupId) {
+            document.getElementById(popupId).style.display = "block";
+        }
+
+        // ✅ Close Popup Function
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = "none";
+        }
+
+        // ✅ Confirm Purchase Function
+        function confirmPurchase() {
+            closePopup('confirm-popup'); // Close first popup
+            showPopup('order-popup'); // Show second popup
+            localStorage.removeItem("selectedID"); // Remove item after purchase
+        }
+
+        // ✅ Purchase Button Click Event
+        document.getElementById("purchase-btn").addEventListener("click", function () {
+            showPopup('confirm-popup'); // Open first popup
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+    <!-- Cart Box -->
+<div id="cart-box" class="cart-box">
+    <h2>Cart Items</h2>
+    <div id="cart-items"></div>
+    <button id="clear-cart">Clear Cart</button>
+</div>
+
+    <script src="main.js"></script>
+</body>
+</html>
+
